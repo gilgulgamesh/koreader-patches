@@ -44,7 +44,7 @@ local pwhite  = Blitbuffer.COLOR_WHITE
 -------------------------------------------------------
 local top_bar_type = CHAPTER -- set as CHAPTER or BOOK
 local bottom_bar_type = BOOK -- set as CHAPTER or BOOK
-local stacked = OFF -- mirrored progress bars ON or OFF.
+local stacked = OFF -- stacks the top bar on the bottom bar
 local margin = 0 -- use BOOK_MARGIN or any numeric value.
 local gap = 0 -- gap between progress bars.
 local radius = 0 -- make the ends a little round.
