@@ -51,7 +51,7 @@ local radius = 0 -- make the ends a little round.
 local top_padding = -1 -- only for stacked=OFF. can be negative
 local prog_bar_height = 7 -- progress bar height.
 local bottom_padding = 0 -- space b/w progress bars and bottom edge.
--- colour settings        -- you can change the definitions too
+-- "colour" settings        -- you can change the definitions too
 local top_bar_fill_color     = pdark
 local top_bar_bg_color       = pwhite
 local bottom_bar_fill_color  = pblack
@@ -175,6 +175,7 @@ Also swapping the bars still works, although mirror was
 removed. I'd love to include options for original twins,
 one day. I'd also love to add right to left.
 
-tested on Kobo Libra 2, only noticed z-fighting with 
-bottom placement. Android not working
+tested on Kobo Libra 2, only noticed conflict with 
+bottom status bar. Android not working. And so I can't
+test colours that aren't grey
 ]]--
