@@ -48,7 +48,7 @@ local stacked = OFF -- stacks the top bar on the bottom bar
 local margin = 0 -- use BOOK_MARGIN or any numeric value.
 local gap = 0 -- gap between progress bars.
 local radius = 0 -- make the ends a little round.
-local top_padding = -1 -- only for stacked=OFF. can be negative
+local top_padding = -1 -- only for stacked=OFF. negative tucks it in
 local prog_bar_height = 7 -- progress bar height.
 local bottom_padding = 0 -- space b/w progress bars and bottom edge.
 -- "colour" settings        -- you can change the definitions above
