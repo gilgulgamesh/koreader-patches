@@ -40,7 +40,7 @@ local plight  = Blitbuffer.COLOR_GRAY
 local pwhite  = Blitbuffer.COLOR_WHITE
 
 -------------------------------------------------------
--- SETTINGS
+     -- -- --  SETTINGS  -- -- --
 -------------------------------------------------------
 local top_bar_type = CHAPTER -- set as CHAPTER or BOOK
 local bottom_bar_type = BOOK -- set as CHAPTER or BOOK
@@ -72,9 +72,7 @@ local bottom_bar_percentage
 local prog_bar_width =  screen_width - gap - margin*2
 local prog_bar_y = screen_height - prog_bar_height - bottom_padding
 
------------------------------------------------------------------
---  Compute percentages 
------------------------------------------------------------------
+--  compute percentages 
 if top_bar_type == CHAPTER then
     top_bar_percentage = chapter_percentage
 else
@@ -87,9 +85,7 @@ else
     bottom_bar_percentage = book_percentage
 end
 
------------------------------------------------------------------
---  Geometry for the bars
------------------------------------------------------------------
+--  geometry for the bars
 local bottom_bar_y    = screen_height - prog_bar_height - bottom_padding    
 
 if stacked then
@@ -99,9 +95,7 @@ else
 
 end
         
------------------------------------------------------------------
---  Create the two widgets
------------------------------------------------------------------
+--  create the two widgets
 local top_bar = ProgressWidget:new{
     width = prog_bar_width,
     height = prog_bar_height,
