@@ -87,12 +87,11 @@ end
 
 --  geometry for the bars
 local bottom_bar_y    = screen_height - prog_bar_height - bottom_padding    
-
+    
 if stacked then
     top_bar_y    = bottom_bar_y - prog_bar_height - gap   
 else
     top_bar_y    = top_padding
-
 end
         
 --  create the two widgets
