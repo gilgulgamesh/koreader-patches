@@ -1,8 +1,5 @@
 --[[
-ReadMes below, to shift the settings higher up. 
-note this works on kobo and likely kindle, but
-not on android for me.
-also only on free-flowing document types. 
+ReadMe below. Scroll for settings.
 ]]--
 
 local Blitbuffer = require("ffi/blitbuffer")
@@ -34,10 +31,10 @@ local BOOK = 1
 local ON = true
 local OFF = false 
 --  colour definitions
-local pblack  = Blitbuffer.COLOR_BLACK
-local pdark   = Blitbuffer.COLOR_GRAY_4
-local plight  = Blitbuffer.COLOR_GRAY
-local pwhite  = Blitbuffer.COLOR_WHITE
+local black  = Blitbuffer.COLOR_BLACK
+local dark   = Blitbuffer.COLOR_GRAY_4
+local light  = Blitbuffer.COLOR_GRAY
+local white  = Blitbuffer.COLOR_WHITE
 
 -------------------------------------------------------
      -- -- --  SETTINGS  -- -- --
@@ -45,17 +42,17 @@ local pwhite  = Blitbuffer.COLOR_WHITE
 local top_bar_type = CHAPTER -- set as CHAPTER or BOOK
 local bottom_bar_type = BOOK -- set as CHAPTER or BOOK
 local stacked = OFF -- stacks the top bar on the bottom bar
-local margin = 0 -- use BOOK_MARGIN or any numeric value.
+local margin = 0 -- use BOOK_MARGIN or any numeric value. Marin from sides
 local gap = 0 -- gap between progress bars.
 local radius = 0 -- make the ends a little round.
-local top_padding = -1 -- only for stacked=OFF. negative tucks it in
-local prog_bar_height = 7 -- progress bar height.
-local bottom_padding = 0 -- space b/w progress bars and bottom edge.
+local top_padding = -1 -- only for stacked=OFF. negative tucks it in to the device edge
+local prog_bar_thickness = 9 -- progress bar height.
+local bottom_padding = 0 -- space between progress bars and bottom edge. Negative tucks it in
 -- "colour" settings        -- you can change the definitions above
-local top_bar_fill_color     = pdark
-local top_bar_bg_color       = pwhite
-local bottom_bar_fill_color  = pblack
-local bottom_bar_bg_color    = pwhite
+local top_bar_seen_color     = dark
+local top_bar_unread_color       = white
+local bottom_bar_seen_color  = black
+local bottom_bar_unread_color    = white
 
 ------------------------------------------------------
 -- you don't have to change anything below this line.
@@ -70,7 +67,7 @@ local top_bar_percentage
 local bottom_bar_percentage
 
 local prog_bar_width =  screen_width - gap - margin*2
-local prog_bar_y = screen_height - prog_bar_height - bottom_padding
+local prog_bar_y = screen_height - prog_bar_thickness - bottom_padding
 
 --  compute percentages 
 if top_bar_type == CHAPTER then
@@ -86,10 +83,10 @@ else
 end
 
 --  geometry for the bars
-local bottom_bar_y    = screen_height - prog_bar_height - bottom_padding    
+local bottom_bar_y    = screen_height - prog_bar_thickness - bottom_padding    
     
 if stacked then
-    top_bar_y    = bottom_bar_y - prog_bar_height - gap   
+    top_bar_y    = bottom_bar_y - prog_bar_thickness - gap   
 else
     top_bar_y    = top_padding
 end
@@ -97,26 +94,26 @@ end
 --  create the two widgets
 local top_bar = ProgressWidget:new{
     width = prog_bar_width,
-    height = prog_bar_height,
+    height = prog_bar_thickness,
     percentage = top_bar_percentage,
     margin_v = 0,
     margin_h = 0,
     radius = radius,
     bordersize = 0,
-    fillcolor = top_bar_fill_color,
-    bgcolor = top_bar_bg_color,
+    fillcolor = top_bar_seen_color,
+    bgcolor = top_bar_unread_color,
 }
 
 local bottom_bar = ProgressWidget:new{
     width = prog_bar_width,
-    height = prog_bar_height,
+    height = prog_bar_thickness,
     percentage = bottom_bar_percentage,
     margin_v = 0,
     margin_h = 0,
     radius = radius,
     bordersize = 0,
-    fillcolor = bottom_bar_fill_color,
-    bgcolor = bottom_bar_bg_color,
+    fillcolor = bottom_bar_seen_color,
+    bgcolor = bottom_bar_unread_color,
 }
 local bottom_bar_x = Screen:getWidth()/ 2 + gap / 2
 
@@ -125,56 +122,25 @@ bottom_bar:paintTo(bb, margin, bottom_bar_y)
 
 end
 
+
 --[[
-Original Preface
+By default this is for a status bar above and below, with a setting to stack them.
+Colour, thicnkess, and margin should be clear, padding is used to 
+make one smaller than the other by tucking it away into the device edge,
+and can be used to hide one of the bars entirely.
 
-i found that chapter ticks on a regular progress bar wasn't for me. i wanted a 
-separate progress bar for chapter that also didn't clutter up the ui. so i made this.
+Btw, all settings can be edited within KOReader, under Tools // More tools
+// patch management // After setup // [long press the patch name]
 
-**this patch joins two half-sized progress bars end to end 
-to make them look like one regular progress bar.*** changed
+As of Koreader 25.10 works on Android. Previously tested on Kobo, 
+and original fork was confirmed to work on Kindle.
+Only supports reflowable documents (not PDF)
 
-you can choose what progress (chapter/book) to show on either side and there's
-also an option to 'mirror' the progress bars. for eg., chapter progress on both sides
-plus mirrored = ON and gap = 0 will essentially give you one regular size progress bar 
-that fills from the centre towards the edges.  
+Note: only grays seem to work for colour definitions.
 
-you should probably disable the default koreader progress bar and definitely 
-uncheck 'auto refresh items' from status bar settings for this to work properly.
+hugely indebted to zenixlabs for absolutely everything, from their currently removed
+patch  (https://github.com/zenixlabs/koreader-patches)
 
-this patch works really well on my kindle 4 and kindle basic 2019.
-
-you'll find instructions to configure this patch if you scroll down.
-
-happy reading! =)
-
-CREDITS: some outline code for this was borrowed from a user patch made by 
+Zenixlan's CREDITS: some outline code for this was borrowed from a user patch made by 
 joshua cantara. (https://github.com/joshuacant/KOReader.patches)
-
-
-
-Preface to Second Edition
-
-write up and credit for absolutely everything 
-to zenixlabs 
-(https://github.com/zenixlabs/koreader-patches)
-
-WARNING this has ai code. this is my first project
-I think I understand it all now. 
-I don't understand all the original code.
-i removed what was unnecessary,
-(mirror, inverted) and added stacked vs top of screen
-
-I also renamed the colour variables, renaming the
-original pgray and pblack, to plight and
-pdark. These are also redefinable to anything.
-I then added full white and full black. I
-encourage anyone to redefine the colours to customise.
-Also swapping the bars still works, although mirror was
-removed. I'd love to include options for original twins,
-one day. I'd also love to add right to left.
-
-tested on Kobo Libra 2, only noticed conflict with 
-bottom status bar. Android not working. And so I can't
-test colours that aren't grey
 ]]--
