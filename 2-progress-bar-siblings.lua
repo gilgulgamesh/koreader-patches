@@ -140,11 +140,12 @@ progress type so that the occasional overlaps aren't confusing, as even a
 status bar with no progress bar will overlap occasionally. (Ideally
 me or someone can fix this z-fighting eventually)
 
-I would legit pay someone to make this work on PDF
 
 As of Koreader 25.10 works on Android. Previously tested on Kobo, 
 and original fork was confirmed to work on Kindle.
 Only supports reflowable documents (not PDF)
+
+I would legit pay someone to make this work on PDF
 
 Note: only grays seem to work for colour definitions.
 
