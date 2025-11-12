@@ -129,14 +129,16 @@ Colour, thicnkess, and margin should be clear, padding is used to
 make one smaller than the other by tucking it away into the device edge,
 and can be used to hide one of the bars entirely.
 
+
+Btw, all settings can be edited within KOReader, under Tools // More tools
+// patch management // After setup // [long press the patch name]
+
 It also draws on top of the regular ui, so it doesnt clash with the normal
 progress bar. But disable auto-refresh, as any refresh causes it to 
 temporarily draw above the new bars. I just make them the same height and 
 progress type so that the occasional overlaps aren't confusing, as even a
-status bar with no progress bar will overlap occasionally
-
-Btw, all settings can be edited within KOReader, under Tools // More tools
-// patch management // After setup // [long press the patch name]
+status bar with no progress bar will overlap occasionally. (Ideally
+me or someone can fix this z-fighting eventually)
 
 As of Koreader 25.10 works on Android. Previously tested on Kobo, 
 and original fork was confirmed to work on Kindle.
