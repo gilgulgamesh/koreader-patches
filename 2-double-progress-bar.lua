@@ -167,8 +167,8 @@ then enable custom TOC and make a chapter.
 
 Note: only grays seem to work for colour definitions.
 
-hugely indebted to zenixlabs for absolutely everything, from their currently removed
-patch  (https://github.com/zenixlabs/koreader-patches)
+hugely indebted to zenixlabs for absolutely everything, from  currently removed
+patch  (https://github.com/zenixlabs/koreader-frankenpatches-public)
 
 Zenixlan's CREDITS: some outline code for this was borrowed from a user patch made by 
 joshua cantara. (https://github.com/joshuacant/KOReader.patches)
