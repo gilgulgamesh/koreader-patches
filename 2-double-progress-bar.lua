@@ -46,7 +46,7 @@ local margin = 0 -- use BOOK_MARGIN or any numeric value. Marin from sides
 local gap = 0 -- gap between progress bars.
 local radius = 0 -- make the ends a little round.
 local top_padding = -1 -- only for stacked=OFF. negative tucks it in to the device edge
-local prog_bar_thickness = 9 -- progress bar height.
+local prog_bar_thickness = 7 -- progress bar height.
 local bottom_padding = 0 -- space between progress bars and bottom edge. Negative tucks it in
 -- "colour" settings        -- you can change the definitions above
 local top_bar_seen_color     = dark
