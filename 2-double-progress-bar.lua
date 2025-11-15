@@ -15,17 +15,34 @@ local UIManager = require("ui/uimanager")
 
 ReaderView.paintTo = function(self, bb, x, y)
     _ReaderView_paintTo_orig(self, bb, x, y)
-    if self.render_mode ~= nil then return end -- Show only for epub-likes and never on pdf-likes
 --  book info
 local pageno = self.state.page or 1 -- Current page
 local pages = self.ui.doc_settings.data.doc_pages or 1
 local pages_left_book  = pages - pageno
 -- chapter info
-local pages_chapter = self.ui.toc:getChapterPageCount(pageno) or pages
-local pages_left = self.ui.toc:getChapterPagesLeft(pageno) or self.ui.document:getTotalPagesLeft(pageno)
-local pages_done = self.ui.toc:getChapterPagesDone(pageno) or 0
+local toc = self.ui.toc
+if not toc then return end -- Skip when ToC module missing
+toc:fillToc()
+local toc_items = toc.toc
+if not toc_items or #toc_items == 0 then return end -- Skip when chapter data is unavailable or empty
+local doc = self.ui.document
+local pages_chapter
+local pages_left
+local pages_done
+
+if toc then
+    pages_chapter = toc:getChapterPageCount(pageno) or pages
+    pages_left = toc:getChapterPagesLeft(pageno) or (doc and doc.getTotalPagesLeft and doc:getTotalPagesLeft(pageno)) or (pages - pageno)
+    pages_done = toc:getChapterPagesDone(pageno) or 0
+else
+    pages_chapter = pages
+    pages_left = (doc and doc.getTotalPagesLeft and doc:getTotalPagesLeft(pageno)) or (pages - pageno)
+    pages_done = pageno - 1
+end
+
 pages_done = pages_done + 1 -- This +1 is to include the page you're looking at.
-local BOOK_MARGIN = self.document:getPageMargins().left
+local page_margins = (self.document and self.document.getPageMargins and self.document:getPageMargins()) or {left = 0}
+local BOOK_MARGIN = page_margins.left or 0
 local CHAPTER = 0
 local BOOK = 1
 local ON = true
