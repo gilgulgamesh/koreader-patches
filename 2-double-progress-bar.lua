@@ -162,7 +162,8 @@ As of Koreader 25.10 works on Android. Previously tested on Kobo,
 and original fork was confirmed to work on Kindle.
 Only supports reflowable documents (not PDF)
 
-I would legit pay someone to make this work on PDF
+Works on PDF now! Cheers Omer-Faruq. If it doesn't render on some PDF
+then enable custom TOC and make a chapter.
 
 Note: only grays seem to work for colour definitions.
 
