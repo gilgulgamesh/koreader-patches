@@ -53,9 +53,9 @@ local dark   = Blitbuffer.COLOR_GRAY_4
 local light  = Blitbuffer.COLOR_GRAY
 local white  = Blitbuffer.COLOR_WHITE
 
--------------------------------------------------------
+-------------------------------------------
      -- -- --  SETTINGS  -- -- --
--------------------------------------------------------
+-------------------------------------------
 local top_bar_type = CHAPTER -- set as CHAPTER or BOOK
 local bottom_bar_type = BOOK -- set as CHAPTER or BOOK
 local stacked = OFF -- stacks the top bar on the bottom bar
