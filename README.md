@@ -15,8 +15,8 @@ Transparent gives a transparent unseen colour. This is useful for
  - pdfs, as it gives you more screen real estate
  - coloured backgrounds, which this simple patch can't do
  - overlaying on top of another element such as a stock or modified progess bar. Works great with [statusbar-thin-chapter](https://gist.github.com/sebdelsol/16ab741b44b75a46cbceb133163bbab5)
-
- - to do: merge them and add this as a toggle
+ 
+ to do: merge them and add this as a toggle
 
 # 2 -quick-settings1.0+.lua
 
@@ -24,7 +24,7 @@ Made from the first version of the patch
  - resizes the proportions to be more compact, cohesive, and asthetically balanced. 
  - adds buttons for Off and Min for frontlight and warmth respectively
 
- - to do: update to latest version, then make a pull request
+to do: update to latest version, then make a pull request
  
 # 2-statusbar-thin-chapter+allTOC.lua
 	
