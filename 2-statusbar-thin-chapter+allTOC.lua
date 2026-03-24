@@ -167,9 +167,9 @@ ReaderFooter.setTocMarkers = function(self, reset)
     end
     was_thin_ticks = self.progress_bar.thin_ticks
 
-    if self.progress_bar.thin_ticks then -- force TOC to level 1 to avoid cluttering the status bar
-        ReaderToc.getTocTicks = function(self, level) return { orig_ReaderToc_getTocTicks(self, 1) } end
-    end
+    --if self.progress_bar.thin_ticks then -- force TOC to level 1 to avoid cluttering the status bar
+        --ReaderToc.getTocTicks = function(self, level) return { orig_ReaderToc_getTocTicks(self, 1) } end
+    --end
 
     local save_thin_setting = self.settings.progress_style_thin
     self.settings.progress_style_thin = false -- prevent premature exit
