@@ -3,7 +3,7 @@
 
 # 2-confirm-first-open~.lua
 	
-Shorten the promp text (it's a little goofy)
+Shorten the prompt text (it's a little goofy)
 
 # 2-double-progress-bar.lua
 
