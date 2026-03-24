@@ -16,6 +16,8 @@ Transparent gives a transparent unseen colour. This is useful for
  - coloured backgrounds, which this simple patch can't do
  - overlaying on top of another element such as a stock or modified progess bar. Works great with [statusbar-thin-chapter](https://gist.github.com/sebdelsol/16ab741b44b75a46cbceb133163bbab5)
 
+ - to do: merge them and add this as a toggle
+
 # 2 -quick-settings1.0+.lua
 
 Made from the first version of the patch
