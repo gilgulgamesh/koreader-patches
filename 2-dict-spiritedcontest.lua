@@ -1,5 +1,5 @@
-local radius_size = 0
-local border_size = 1.5
+local radius_size = 0  
+local border_size = 1.5 -- for both 0 is none and 1 is default
 
 --[[--
 This module renders the dictionary widget.
