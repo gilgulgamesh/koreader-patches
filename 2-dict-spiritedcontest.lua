@@ -1,6 +1,8 @@
 local radius_size = 0  
-local border_size = 1.5 -- for both 0 is none and 1 is default
-
+local border_size = 1.5 
+local height_scale = 0.7-- for both 0 is none and 1 is default
+local side_margin = 100 -- default is 80
+local show_query = false
 --[[--
 This module renders the dictionary widget.
 
@@ -329,7 +331,7 @@ function DictQuickLookup:init()
     if is_large_window then
         self.width = Screen:getWidth() - 2*Size.margin.default
     else
-        self.width = self.width or Screen:getWidth() - Screen:scaleBySize(80) -- user patchable
+        self.width = self.width or Screen:getWidth() - Screen:scaleBySize(side_margin) -- user patchable
     end
     local frame_bordersize = Size.border.window
     local inner_width = self.width - 2*frame_bordersize
@@ -484,7 +486,7 @@ function DictQuickLookup:init()
     else
         -- Definition height was previously computed as 0.5*0.7*screen_height, so keep
         -- it that way. Components will add themselves to that.
-        self.definition_height = math.floor(avail_height * 0.5 * 0.7)
+        self.definition_height = math.floor(avail_height * 0.5 * 0.7 * height_scale)
         -- But we want it to fit to the lines that will show, to avoid
         -- any extra padding
         local nb_lines = Math.round(self.definition_height / self.definition_line_height)
@@ -1448,7 +1450,7 @@ function DictQuickLookup:changeDictionary(index, skip_update)
         self.displaynb = T("%1 / %2", index, #self.results)
         -- add queried word to 1st result's definition, so we can see
         -- what was the selected text and if we selected wrong
-        if index == 1 then
+        if index == 1 and show_query == true then
             self:addQueryWordToResult()
         end
     end
