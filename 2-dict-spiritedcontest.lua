@@ -1,7 +1,7 @@
 local radius_size = 0  
 local border_size = 1.5 
-local height_scale = 0.7-- for both 0 is none and 1 is default
-local side_margin = 100 -- default is 80
+local height_scale = 0.6-- for both 0 is none and 1 is default
+local sidemargin_scale = 1.8 -- default is 80
 local show_query = false
 --[[--
 This module renders the dictionary widget.
@@ -331,7 +331,7 @@ function DictQuickLookup:init()
     if is_large_window then
         self.width = Screen:getWidth() - 2*Size.margin.default
     else
-        self.width = self.width or Screen:getWidth() - Screen:scaleBySize(side_margin) -- user patchable
+        self.width = self.width or Screen:getWidth() - Screen:scaleBySize(80*sidemargin_scale) -- user patchable
     end
     local frame_bordersize = Size.border.window
     local inner_width = self.width - 2*frame_bordersize
