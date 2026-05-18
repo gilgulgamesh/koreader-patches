@@ -1,3 +1,6 @@
+local radius_size = 0
+local border_size = 1
+
 --[[--
 This module renders the dictionary widget.
 
@@ -545,7 +548,7 @@ function DictQuickLookup:init()
     }
 
     self.dict_frame = FrameContainer:new{
-        radius = Size.radius.window,
+        radius = radius_size * Size.radius.window,
         bordersize = frame_bordersize,
         padding = 0,
         margin = 0,
@@ -987,7 +990,7 @@ function DictQuickLookup:buildButtonLayout()
         button_layout = config and util.tableDeepCopy(config.layout) or default_layout
     end
 
-    local frame_bordersize = Size.border.window
+    local frame_bordersize = border_size * Size.border.window
     local inner_width = self.width - 2 * frame_bordersize
     local buttons_width = inner_width - 2 * Size.padding.default
 
